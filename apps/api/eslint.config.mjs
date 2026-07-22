@@ -32,4 +32,13 @@ export default tseslint.config(
       "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },
+  {
+    // `expect(mock.method).toHaveBeenCalled()` passa o método desacoplado do
+    // objeto de propósito — é o idioma padrão do jest, e não uma chamada com
+    // `this` errado. typescript-eslint recomenda desligar a regra em testes.
+    files: ['**/*.spec.ts'],
+    rules: {
+      '@typescript-eslint/unbound-method': 'off',
+    },
+  },
 );

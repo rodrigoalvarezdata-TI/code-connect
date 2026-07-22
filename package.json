@@ -7,11 +7,23 @@
     "web:dev": "pnpm --filter web dev",
     "web:build": "pnpm --filter web build",
     "web:lint": "pnpm --filter web lint",
+    "web:test": "pnpm --filter web test:run",
+    "web:test:a11y": "pnpm --filter web test:a11y",
     "api": "pnpm --filter api",
     "api:dev": "pnpm --filter api start:dev",
     "api:build": "pnpm --filter api build",
     "api:lint": "pnpm --filter api lint",
     "api:test": "pnpm --filter api test",
+    "api:test:e2e": "pnpm --filter api test:e2e",
+    "api:migration:generate": "pnpm --filter api migration:generate",
+    "api:migration:run": "pnpm --filter api migration:run",
+    "api:migration:revert": "pnpm --filter api migration:revert",
+    "api:migration:show": "pnpm --filter api migration:show",
+    "api:seed": "pnpm --filter api seed",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f postgres",
+    "db:psql": "docker compose exec postgres psql -U code_conect -d code_conect",
     "dev": "pnpm --parallel --filter web --filter api dev"
   }
 }

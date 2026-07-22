@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: code-conect-postgres
+    restart: unless-stopped
+    environment:
+      # Lidos de .env na raiz (veja .env.example). Os defaults só servem para
+      # o ambiente local — em qualquer outro lugar as variáveis são obrigatórias.
+      POSTGRES_USER: ${POSTGRES_USER:-code_conect}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-code_conect}
+      POSTGRES_DB: ${POSTGRES_DB:-code_conect}
+    ports:
+      # Só na interface de loopback: sem o prefixo 127.0.0.1 o Docker publica
+      # a porta em 0.0.0.0 e fura o firewall do host.
+      - '127.0.0.1:${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      # Volume nomeado (não bind mount): os dados sobrevivem a `docker compose
+      # down` e só somem com `docker compose down -v`.
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      # A API espera este healthcheck antes de rodar as migrations — o Postgres
+      # aceita conexões alguns segundos depois de o container subir.
+      test:
+        ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-code_conect} -d ${POSTGRES_DB:-code_conect}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  postgres-data:
+    driver: local

@@ -1,10 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>web</title>
+    <!--
+      Preload do banner (elemento de LCP no desktop). Fica aqui, em HTML estático,
+      para o preload scanner disparar o download antes do bundle executar.
+
+      Só AVIF: `type` em preload é honrado, então um preload WebP também seria
+      baixado por browsers com AVIF — download duplo. `media` e o conjunto de
+      candidatos precisam bater exatamente com o <source> em BannerImage.tsx,
+      senão o browser busca dois arquivos.
+
+      O Vite reescreve `imagesrcset` para os nomes hasheados no build.
+    -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      media="(min-width: 768px)"
+      imagesrcset="/src/assets/banner-login-400.avif 1x, /src/assets/banner-login-800.avif 2x"
+    />
+    <meta
+      name="description"
+      content="Entre ou crie sua conta no Code Connect, a plataforma que conecta pessoas desenvolvedoras."
+    />
+    <title>Code Connect — Entrar ou criar conta</title>
   </head>
   <body>
     <div id="root"></div>

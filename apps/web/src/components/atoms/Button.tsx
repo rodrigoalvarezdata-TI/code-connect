@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
-type ButtonVariant = 'primary'
+type ButtonVariant = 'primary' | 'outline'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
@@ -8,7 +8,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-brand-400 text-surface-page hover:bg-brand-500',
+  primary: 'bg-brand-400 text-brand-ink hover:bg-brand-500',
+  // Contorno verde (botão "Publicar" do menu): brand-400 tem 13.37:1 sobre
+  // surface-card, bem acima do mínimo para texto e para a borda (1.4.11).
+  outline:
+    'border border-brand-400 text-brand-400 hover:bg-brand-400 hover:text-brand-ink',
 }
 
 export function Button({

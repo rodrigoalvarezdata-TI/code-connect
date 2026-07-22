@@ -5,3 +5,6 @@ coverage/
 .env
 .env.local
 *.log
+
+# Artefatos locais do Claude Code (worktrees, estado de sessão)
+.claude/

@@ -1,4 +1,6 @@
 packages:
   - "apps/*"
 allowBuilds:
+  # Telemetria de terceiros; não precisa rodar postinstall.
+  '@scarf/scarf': false
   unrs-resolver: true

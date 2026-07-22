@@ -1,19 +1,25 @@
 @import 'tailwindcss';
 
-/* Design tokens da marca code-connect (derivados do banner/mockup) */
+/* Design tokens da marca code-connect (alinhados aos tokens do Figma) */
 @theme {
-  --color-brand-400: #5ef08a;
-  --color-brand-500: #3ecf6a;
-  --color-brand-600: #2fae57;
+  /* Verde destaque (#81FE88) + tons de interação derivados */
+  --color-brand-400: #81fe88;
+  --color-brand-500: #5fe86e;
+  --color-brand-600: #3ecf6a;
+  /* Verde petróleo — texto sobre superfícies verdes */
+  --color-brand-ink: #132e35;
 
-  --color-surface-page: #0a0d0f;
-  --color-surface-card: #1b1f24;
+  --color-surface-page: #00090e; /* Grafite */
+  --color-surface-card: #171d1f; /* Cinza Escuro */
   --color-surface-input: #2b3037;
 
   --color-border-subtle: #343b43;
 
-  --color-content: #e6e8ea;
-  --color-content-muted: #9aa0a6;
+  --color-content: #e1e1e1; /* Offwhite */
+  --color-content-muted: #888888; /* Cinza médio */
+
+  /* Erro/validação — 7.51:1 sobre surface-card, 5.80:1 sobre surface-input */
+  --color-danger: #ff8a8a;
 
   --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
 }
